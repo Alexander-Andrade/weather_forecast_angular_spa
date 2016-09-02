@@ -41,11 +41,14 @@ weatherApp.controller('forecastController', ['$scope', 'cityService','$resource'
     console.log($scope.weatherResult)
     
     $scope.convertToDate = function(date) {
-        return new Date(date);
+        return new Date(date * 1000);
     }
     
     $scope.convertToCelsius = function(degK){
         return Math.round(degK - 273.15);
+    }
+    $scope.isEqToParamsDays = function(days){
+        return days == $scope.days
     }
 }]);
 
