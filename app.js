@@ -25,8 +25,15 @@ weatherApp.controller('homeController', ['$scope', 'cityService', function($scop
 }]);
 
 
-weatherApp.controller('forecastController', ['$scope', 'cityService', function($scope, cityService){
+weatherApp.controller('forecastController', ['$scope', 'cityService','$resource', function($scope, cityService, $resource){
     $scope.city = cityService.city;
+    
+    $scope.datatimeAPI = $resource("http://date.jsontest.com")
+    $scope.datetimeResults = $scope.datatimeAPI.get({});
+
+    $scope.convertToDate = function(date) {
+        return new Date(date);
+    }
 }]);
 
 //SERVICES
